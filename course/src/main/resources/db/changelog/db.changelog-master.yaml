@@ -1,0 +1,101 @@
+databaseChangeLog:
+  - changeSet:
+      id: createTableCourses
+      author: Igor Sily
+      changes:
+        - sqlFile:
+            dbms: postgresql
+            encoding: utf8
+            endDelimiter: \n/\s*\n|\n/\s*$
+            path: classpath:db/changelog/scripts/CREATE_TABLE_COURSES.sql
+            splitStatements: true
+            stripComments: true
+  - changeSet:
+      id: createTableLessons
+      author: Igor Sily
+      changes:
+        - sqlFile:
+            dbms: postgresql
+            encoding: utf8
+            endDelimiter: \n/\s*\n|\n/\s*$
+            path: classpath:db/changelog/scripts/CREATE_TABLE_LESSONS.sql
+            splitStatements: true
+            stripComments: true
+  - changeSet:
+      id: createTableModules
+      author: Igor Sily
+      changes:
+        - sqlFile:
+            dbms: postgresql
+            encoding: utf8
+            endDelimiter: \n/\s*\n|\n/\s*$
+            path: classpath:db/changelog/scripts/CREATE_TABLE_MODULES.sql
+            splitStatements: true
+            stripComments: true
+  - changeSet:
+      id: alterTableModulesAddColumnCourseId
+      author: Igor Sily
+      changes:
+        - sqlFile:
+            dbms: postgresql
+            encoding: utf8
+            endDelimiter: \n/\s*\n|\n/\s*$
+            path: classpath:db/changelog/scripts/ALTER_TABLE_MODULES_ADD_COLUMN_COURSE_ID.sql
+            splitStatements: true
+            stripComments: true
+  - changeSet:
+      id: createRelationBetweenModulesAndCourses
+      author: Igor Sily
+      changes:
+        - sqlFile:
+            dbms: postgresql
+            encoding: utf8
+            endDelimiter: \n/\s*\n|\n/\s*$
+            path: classpath:db/changelog/scripts/CREATE_RELATIONSHIP_COURSES_MODULES.sql
+            splitStatements: true
+            stripComments: true
+  - changeSet:
+      id: alterTableLessonAddColumnModuleId
+      author: Igor Sily
+      changes:
+        - sqlFile:
+            dbms: postgresql
+            encoding: utf8
+            endDelimiter: \n/\s*\n|\n/\s*$
+            path: classpath:db/changelog/scripts/ALTER_TABLE_LESSON_ADD_COLUMN_MODULE_ID.sql
+            splitStatements: true
+            stripComments: true
+  - changeSet:
+      id: createRelationBetweenLessonsAndModules
+      author: Igor Sily
+      changes:
+        - sqlFile:
+            dbms: postgresql
+            encoding: utf8
+            endDelimiter: \n/\s*\n|\n/\s*$
+            path: classpath:db/changelog/scripts/CREATE_RELATIONSHIP_MODULES_LESSONS.sql
+            splitStatements: true
+            stripComments: true
+
+  - changeSet:
+      id: createTableCoursesUsers
+      author: Igor Sily
+      changes:
+        - sqlFile:
+            dbms: postgresql
+            encoding: utf8
+            endDelimiter: \n/\s*\n|\n/\s*$
+            path: classpath:db/changelog/scripts/CREATE_TABLE_COURSES_USERS.sql
+            splitStatements: true
+            stripComments: true
+  - changeSet:
+      id: createRelationBetweenCoursesAndUsers
+      author: Igor Sily
+      changes:
+        - sqlFile:
+            dbms: postgresql
+            encoding: utf8
+            endDelimiter: \n/\s*\n|\n/\s*$
+            path: classpath:db/changelog/scripts/CREATE_RELATIONSHIP_COURSES_USERS.sql
+            splitStatements: true
+            stripComments: true

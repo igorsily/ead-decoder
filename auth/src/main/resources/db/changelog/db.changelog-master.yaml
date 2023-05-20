@@ -1,0 +1,34 @@
+databaseChangeLog:
+  - changeSet:
+      id: createTableUsers
+      author: Igor Sily
+      changes:
+        - sqlFile:
+            dbms: postgresql
+            encoding: utf8
+            endDelimiter: \n/\s*\n|\n/\s*$
+            path: classpath:db/changelog/scripts/CREATE_TABLE_USERS.sql
+            splitStatements: true
+            stripComments: true
+  - changeSet:
+      id: createTableUsersCoursses
+      author: Igor Sily
+      changes:
+        - sqlFile:
+            dbms: postgresql
+            encoding: utf8
+            endDelimiter: \n/\s*\n|\n/\s*$
+            path: classpath:db/changelog/scripts/CREATE_TABLE_USERS_COURSES.sql
+            splitStatements: true
+            stripComments: true
+  - changeSet:
+      id: createRelaionUsersCourses
+      author: Igor Sily
+      changes:
+        - sqlFile:
+            dbms: postgresql
+            encoding: utf8
+            endDelimiter: \n/\s*\n|\n/\s*$
+            path: classpath:db/changelog/scripts/CREATE_RELATIONSHIP_USER_COURSE.sql
+            splitStatements: true
+            stripComments: true
