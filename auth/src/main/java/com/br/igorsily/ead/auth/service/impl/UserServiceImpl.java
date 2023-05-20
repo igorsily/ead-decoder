@@ -3,13 +3,11 @@ package com.br.igorsily.ead.auth.service.impl;
 import com.br.igorsily.ead.auth.dtos.InstructorDTO;
 import com.br.igorsily.ead.auth.dtos.UserDTO;
 import com.br.igorsily.ead.auth.entity.User;
-import com.br.igorsily.ead.auth.entity.UserCourse;
 import com.br.igorsily.ead.auth.enums.UserStatus;
 import com.br.igorsily.ead.auth.enums.UserType;
 import com.br.igorsily.ead.auth.exception.ConflictException;
 import com.br.igorsily.ead.auth.exception.ResourceNotFoundException;
 import com.br.igorsily.ead.auth.mapper.UserMapper;
-import com.br.igorsily.ead.auth.repository.UserCourseRepository;
 import com.br.igorsily.ead.auth.repository.UserRepository;
 import com.br.igorsily.ead.auth.service.UserService;
 import lombok.RequiredArgsConstructor;
@@ -31,7 +29,6 @@ public class UserServiceImpl implements UserService {
 
     private final UserRepository userRepository;
 
-    private final UserCourseRepository userCourseRepository;
 
     private final UserMapper userMapper;
 
@@ -94,12 +91,6 @@ public class UserServiceImpl implements UserService {
         log.debug("DELETE deleteUser userId deleted {} ", id);
 
         this.findUserById(id);
-
-        List<UserCourse> userCourses = userCourseRepository.findAllUserCourseIntoUser(id);
-
-        if (!userCourses.isEmpty()) {
-            userCourseRepository.deleteAll(userCourses);
-        }
 
         userRepository.deleteById(id);
         log.info("User deleted successfully userId {} ", id);

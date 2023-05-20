@@ -4,7 +4,6 @@ import com.br.igorsily.ead.auth.enums.UserStatus;
 import com.br.igorsily.ead.auth.enums.UserType;
 import com.fasterxml.jackson.annotation.JsonFormat;
 import com.fasterxml.jackson.annotation.JsonInclude;
-import com.fasterxml.jackson.annotation.JsonProperty;
 import jakarta.persistence.*;
 import lombok.*;
 import org.hibernate.Hibernate;
@@ -15,7 +14,6 @@ import java.io.Serial;
 import java.io.Serializable;
 import java.time.LocalDateTime;
 import java.util.Objects;
-import java.util.Set;
 import java.util.UUID;
 
 @Getter
@@ -74,17 +72,6 @@ public class User implements Serializable {
     @JsonFormat(shape = JsonFormat.Shape.STRING, pattern = "dd-MM-yyyy HH:mm:ss")
     @Column(name = "updated_at")
     private LocalDateTime updatedAt;
-
-    @JsonProperty(access = JsonProperty.Access.WRITE_ONLY)
-    @OneToMany(mappedBy = "user", fetch = FetchType.LAZY)
-    private Set<UserCourse> usersCourses;
-
-    public UserCourse convertToUserCourse(UUID courseId) {
-        return UserCourse.builder()
-                .user(this)
-                .courseId(courseId)
-                .build();
-    }
 
     @Override
     public boolean equals(Object o) {
